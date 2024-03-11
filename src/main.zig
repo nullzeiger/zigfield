@@ -49,7 +49,7 @@ fn createMap(arrive: Arrive) [ROWSCOLS][ROWSCOLS]u8 {
 fn printMap(map: *[ROWSCOLS][ROWSCOLS]u8, hero: Hero) void {
     std.debug.print("\x1B[2J\x1B[H", .{});
 
-    std.debug.print("Vim command to move(hjkl) and exit(q)\n", .{});
+    std.debug.print("Command to move(hjkl) and exit(q)\n", .{});
 
     map[hero.y][hero.x] = hero.symbol;
 
