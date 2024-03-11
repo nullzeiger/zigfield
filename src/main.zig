@@ -119,9 +119,10 @@ pub fn main() !void {
 
     while (loop) {
         // Input
-        const stdin = std.io.getStdIn().reader();
+        const reader = std.io.getStdIn().reader();
         var input: [BUFFER]u8 = undefined;
-        _ = try stdin.readUntilDelimiter(&input, '\n');
+        var fbs = std.io.fixedBufferStream(&input);
+        try reader.streamUntilDelimiter(fbs.writer(), '\n', BUFFER);
 
         if (input[0] != 'q' or input[0] != 'l' or input[0] != 'k' or input[0] != 'j' or input[0] != 'h') {
             printMap(&map, hero);
